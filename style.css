@@ -851,7 +851,7 @@ select.form-control {
 
 .kpi-change {
   font-size: var(--font-size-sm);
-  color: var(--color-success);
+  color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
 }
 
@@ -982,7 +982,7 @@ select.form-control {
 
 .employee-chart-card.high-performer {
   border: 2px solid var(--color-primary);
-  box-shadow: 0 0 20px rgba(var(--color-primary-rgb, 33, 128, 141), 0.2);
+  box-shadow: 0 0 20px rgba(var(--color-teal-500-rgb, 33, 128, 141), 0.2);
 }
 
 .employee-chart-card.high-performer::before {
@@ -1024,22 +1024,20 @@ select.form-control {
   border-radius: var(--radius-full);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
-  margin-right: var(--space-8);
-}
-
-.leave-indicator {
-  display: inline-block;
-  background: var(--color-warning);
-  color: var(--color-btn-primary-text);
-  padding: var(--space-4) var(--space-8);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
 }
 
 .export-btn {
   width: 100%;
   margin-top: var(--space-12);
+}
+
+/* Special styling for leave days and incomplete tasks */
+.leave-indicator {
+  background: rgba(var(--color-warning-rgb, 168, 75, 47), 0.3) !important;
+}
+
+.incomplete-indicator {
+  background: rgba(var(--color-info-rgb, 98, 108, 113), 0.4) !important;
 }
 
 /* Responsive Design */
@@ -1125,15 +1123,6 @@ select.form-control {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Special styling for leave day and carryforward */
-.leave-day {
-  background: rgba(var(--color-warning-rgb, 168, 75, 47), 0.1) !important;
-}
-
-.carryforward-bar {
-  background: rgba(233, 30, 99, 0.3) !important;
 }
 
 /* Loading state */
