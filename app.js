@@ -1,161 +1,101 @@
 // Employee Data Structure for 25-30 August 2025 (Monday to Saturday)
+/* ---------- 1. DAY LABELS (Mon-Sat) ---------- */
+const dayLabels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+/* ---------- 2. EMPLOYEE DATA (Mon-Sat, 25-30 Aug 2025) ---------- */
 const employeeData = {
-    development: [
-        {
-            name: "Dharmendra Singh",
-            role: "Tech Lead",
-            dailyTasks: [3, 9, 7, 4, 4, 3], // Mon-Sat
-            totalTasks: 30,
-            color: '#FF5722'
-        },
-        {
-            name: "Homendra Patil",
-            role: "Senior Software Developer",
-            dailyTasks: [2, 9, 7, 5, 10, 6],
-            totalTasks: 39,
-            color: '#FF5722'
-        },
-        {
-            name: "Neha Agarwal",
-            role: "Senior Software Developer",
-            dailyTasks: [14, 9, 6, 10, 10, 6],
-            totalTasks: 55,
-            color: '#FF5722'
-        },
-        {
-            name: "Ajay Marko",
-            role: "Frontend Developer",
-            dailyTasks: [2, 10, 13, 13, 26, 6],
-            totalTasks: 70,
-            color: '#FF5722',
-            isTopPerformer: true
-        },
-        {
-            name: "Sudha Sahu",
-            role: "React Native Developer",
-            dailyTasks: [12, 5, 7, 8, 8, 9],
-            totalTasks: 49,
-            color: '#FF5722'
-        }
-    ],
-    testing: [
-        {
-            name: "Sunil Singh",
-            role: "Quality Analyst",
-            dailyTasks: [1, 58, 33, 31, 12, 4],
-            totalTasks: 139,
-            color: '#9C27B0',
-            isTopPerformer: true
-        },
-        {
-            name: "Om Sain",
-            role: "Quality Analyst",
-            dailyTasks: [28, 5, 0, 34, 26, 7], // Wednesday = 0 (leave)
-            totalTasks: 100,
-            color: '#9C27B0',
-            leaveDay: 2, // Tuesday (0-indexed: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5)
-            leaveNote: "On Leave"
-        }
-    ],
-    product: [
-        {
-            name: "Abhishek Singh",
-            role: "Product Manager",
-            dailyTasks: [0, 0, 0, 0, 0, 3], // Only worked Saturday
-            totalTasks: 3,
-            color: '#3F51B5'
-        },
-        {
-            name: "Sakshi Bhuwal",
-            role: "Process Coordinator",
-            dailyTasks: [2, 1, 1, 0, 1, 1], // Thursday = 0 (leave)
-            totalTasks: 6,
-            color: '#3F51B5',
-            leaveDay: 3, // Wednesday (0-indexed: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5)
-            leaveNote: "On Leave"
-        }
-    ],
-    design: [
-        {
-            name: "Hemant Talole",
-            role: "UI Designer",
-            dailyTasks: [3, 2, 3, 4, 4, 7],
-            totalTasks: 23,
-            color: '#E91E63'
-        }
-    ]
+  development: [
+    { name: 'Dharmendra Singh', role: 'Tech Lead',
+      dailyTasks: [3, 3, 9, 7, 4, 4], totalTasks: 30, color: '#FF5722' },
+    { name: 'Homendra Patil', role: 'Senior Software Developer',
+      dailyTasks: [6, 2, 9, 7, 5, 10], totalTasks: 39, color: '#FF5722' },
+    { name: 'Neha Agarwal', role: 'Senior Software Developer',
+      dailyTasks: [6, 14, 9, 6, 10, 10], totalTasks: 55, color: '#FF5722' },
+    { name: 'Ajay Marko', role: 'Frontend Developer',
+      dailyTasks: [6, 2, 10, 13, 13, 26], totalTasks: 70,
+      color: '#FF5722', isTopPerformer: true },
+    { name: 'Sudha Sahu', role: 'React Native Developer',
+      dailyTasks: [9, 12, 5, 7, 8, 8], totalTasks: 49, color: '#FF5722' }
+  ],
+  testing: [
+    { name: 'Sunil Singh', role: 'Quality Analyst',
+      dailyTasks: [32, 1, 58, 33, 31, 12], totalTasks: 139,
+      color: '#9C27B0', isTopPerformer: true },
+    { name: 'Om Sain', role: 'Quality Analyst',
+      dailyTasks: [28, 5, 0, 34, 26, 7], totalTasks: 100,
+      color: '#9C27B0', leaveDay: 2, leaveNote: 'On Leave' } // Wed index 2
+  ],
+  product: [
+    { name: 'Abhishek Singh', role: 'Product Manager',
+      dailyTasks: [3, 0, 0, 0, 0, 0], totalTasks: 3, color: '#3F51B5' },
+    { name: 'Sakshi Bhuwal', role: 'Process Coordinator',
+      dailyTasks: [2, 1, 1, 0, 1, 1], totalTasks: 6,
+      color: '#3F51B5', leaveDay: 3, leaveNote: 'On Leave',  // Thu index 3
+      incompleteDay: 2 }                                     // Wed index 2
+  ],
+  design: [
+    { name: 'Hemant Talole', role: 'UI Designer',
+      dailyTasks: [7, 3, 2, 3, 4, 4], totalTasks: 23, color: '#E91E63' }
+  ]
 };
 
-// CEO Dashboard Data for 25-30 August 2025 (Monday to Saturday)
+/* ---------- 3. CEO DATA (Mon-Sat) ---------- */
 const ceoData = {
-    week: "25 August to 30 August 2025",
-    kpis: {
-        userGrowth: {
-            trial: 4,
-            paid: 14,
-            conversion: 77.8
-        },
-        revenue: {
-            weekly: 1652,
-            daily: 55.1,
-            marketingSpend: 150000
-        },
-        marketing: {
-            spend: 150000,
-            visitors: 57, // Monday to Saturday visitors
-            cac: 0,
-            efficiency: 0
-        },
-        team: {
-            tasks: 514, // 243+239+9+23
-            productivity: 100
-        },
-        system: {
-            totalLogins: 32,
-            crmLogins: 1,
-            payrollLogins: 31,
-            tasksLogins: 0,
-            booksLogins: 0
-        }
+  week: '25 August to 30 August 2025',
+  kpis: {
+    userGrowth: { trial: 4, paid: 14, conversion: 77.8 },
+    revenue:    { weekly: 1652, daily: 55.1, marketingSpend: 150000 },
+    marketing:  { spend: 150000, visitors: 59, cac: 0, efficiency: 0 },
+    team:       { tasks: 514, productivity: 100 },
+    system:     { totalLogins: 32, crmLogins: 1, payrollLogins: 31,
+                  tasksLogins: 0, booksLogins: 0 }
+  },
+  charts: {
+    userGrowth: {
+      trialUsers: [4, 4, 4, 4, 4, 4],
+      paidUsers:  [14,14,14,14,14,14]
     },
-    charts: {
-        userGrowth: {
-            trialUsers: [4, 4, 4, 4, 4, 4],
-            paidUsers: [14, 14, 14, 14, 14, 14]
-        },
-        revenue: {
-            dailyRevenue: [55.1, 55.1, 55.1, 55.1, 55.1, 55.1],
-            marketingSpend: [25000, 25000, 25000, 25000, 25000, 25000]
-        },
-        traffic: {
-            visitors: [5, 8, 7, 17, 15, 5] // Monday to Saturday
-        },
-        conversion: {
-            visitors: [5, 8, 7, 17, 15, 5],
-            leads: [0, 0, 0, 0, 0, 0],
-            signups: [0, 0, 0, 0, 0, 0]
-        },
-        departments: {
-            development: [25, 39, 34, 21, 25, 12],
-            design: [3, 12, 1, 1, 3, 1],
-            testing: [1, 14, 2, 9, 11, 18],
-            product: [5, 13, 3, 4, 7, 3]
-        },
-        systemUsage: {
-            crm: [0, 0, 0, 0, 1, 0],
-            payroll: [8, 1, 3, 9, 1, 9],
-            tasks: [0, 0, 0, 0, 0, 0],
-            books: [0, 0, 0, 0, 0, 0]
-        },
-        productivity: {
-            totalTasks: [34, 74, 47, 44, 56, 34], // Sum of all department tasks per day
-            completionRate: [100, 100, 100, 100, 100, 100]
-        }
+    revenue: {
+      dailyRevenue:  [55.1,55.1,55.1,55.1,55.1,55.1],
+      marketingSpend:[25000,25000,25000,25000,25000,25000]
+    },
+    /* correct visitor sequence Mon-Sat */
+    traffic: { visitors: [7,5,8,7,17,15] },
+    conversion: {
+      visitors:[7,5,8,7,17,15], leads:[0,0,0,0,0,0], signups:[0,0,0,0,0,0]
+    },
+    /* department task lines Mon-Sat */
+    departments:{
+      development:[12,25,39,34,21,25],
+      design:     [1,3,12,1,1,3],
+      testing:    [18,1,14,2,9,11],
+      product:    [3,5,13,3,4,7]
+    },
+    /* system usage Mon-Sat */
+    systemUsage:{
+      crm:    [0,0,0,0,1,0],
+      payroll:[9,8,1,3,9,1],
+      tasks:  [0,0,0,0,0,0],
+      books:  [0,0,0,0,0,0]
+    },
+    productivity:{
+      totalTasks:[34,34,78,40,35,46],        // sum of dept tasks each day
+      completionRate:[100,100,100,100,100,100]
     }
+  }
 };
 
-const dayLabels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const chartColors = ['#1FB8CD', '#FFC185', '#B4413C', '#ECEBD5', '#5D878F', '#DB4545', '#D2BA4C', '#964325', '#944454', '#13343B'];
+/* ---------- 4. LABEL / COLOR ARRAYS (untouched) ---------- */
+const chartColors = [
+  '#1FB8CD','#FFC185','#B4413C','#ECEBD5','#5D878F',
+  '#DB4545','#D2BA4C','#964325','#944454','#13343B'
+];
+
+/* ---------- 5. NOTHING ELSE CHANGED ----------
+   The rest of your JS (tab-switch, chart builders, etc.) remains the same.
+   Because every chart pulls its Y-values straight from these arrays,
+   correcting the arrays is all that’s required to realign the visuals.
+------------------------------------------------*/
 
 // Chart instances storage
 let chartInstances = {};
