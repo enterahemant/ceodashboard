@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Performance Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1>Team Performance Dashboard</h1>
+            <div class="week-selector">
+                <label for="weekSelect">Week:</label>
+                <select id="weekSelect" class="form-control">
+                    <option value="current">25 August to 30 August 2025 (Mon-Sat)</option>
+                    <option value="week1">18 Aug - 23 Aug 2025</option>
+                    <option value="week2">11 Aug - 16 Aug 2025</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <button class="tab-button active" data-tab="executive" onclick="switchTab('executive')">
+                Executive Summary
+            </button>
+            <button class="tab-button" data-tab="employee" onclick="switchTab('employee')">
+                Employee Report
+            </button>
+        </nav>
+
+        <!-- Executive Summary Tab -->
+        <div id="executiveTab" class="tab-content active">
+            <!-- KPI Cards -->
+            <div class="kpi-section">
+                <div class="kpi-grid">
+                    <div class="kpi-card" style="background: var(--color-bg-1)">
+                        <h3>Total Tasks</h3>
+                        <div class="kpi-value">514</div>
+                        <div class="kpi-change">+12%</div>
+                    </div>
+                    <div class="kpi-card" style="background: var(--color-bg-2)">
+                        <h3>Completion Rate</h3>
+                        <div class="kpi-value">100%</div>
+                        <div class="kpi-change">+5%</div>
+                    </div>
+                    <div class="kpi-card" style="background: var(--color-bg-3)">
+                        <h3>Team Members</h3>
+                        <div class="kpi-value">10</div>
+                        <div class="kpi-change">-</div>
+                    </div>
+                    <div class="kpi-card" style="background: var(--color-bg-4)">
+                        <h3>Departments</h3>
+                        <div class="kpi-value">4</div>
+                        <div class="kpi-change">-</div>
+                    </div>
+                    <div class="kpi-card" style="background: var(--color-bg-5)">
+                        <h3>Avg Daily Tasks</h3>
+                        <div class="kpi-value">85.7</div>
+                        <div class="kpi-change">+8%</div>
+                    </div>
+                    <div class="kpi-card" style="background: var(--color-bg-6)">
+                        <h3>Top Performer</h3>
+                        <div class="kpi-value">Ajay Marko</div>
+                        <div class="kpi-change">70 tasks</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Charts Grid -->
+            <div class="executive-charts-grid">
+                <div class="chart-card" style="background: var(--color-bg-1)">
+                    <h3>Department Distribution</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="deptDistChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="background: var(--color-bg-2)">
+                    <h3>Daily Team Performance</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="dailyPerfChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="background: var(--color-bg-3)">
+                    <h3>Development Team Tasks</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="devTeamChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="background: var(--color-bg-4)">
+                    <h3>Testing Team Performance</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="testTeamChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="background: var(--color-bg-5)">
+                    <h3>Top 5 Performers</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="topPerfChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="background: var(--color-bg-6)">
+                    <h3>Weekly Trend</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="weeklyTrendChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="background: var(--color-bg-7)">
+                    <h3>Task Completion Rate</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="completionChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="background: var(--color-bg-8)">
+                    <h3>Department Efficiency</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Employee Report Tab -->
+        <div id="employeeTab" class="tab-content">
+            <!-- Department Summary Cards -->
+            <div class="dept-summary-section">
+                <div class="dept-cards-grid">
+                    <div class="dept-card" style="background: rgba(255, 87, 34, 0.1); border-left: 4px solid #FF5722">
+                        <h3>DEVELOPMENT</h3>
+                        <div class="dept-stats">
+                            <div class="stat">
+                                <span class="stat-value">243</span>
+                                <span class="stat-label">Total Tasks</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Team Members</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Completion Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dept-card" style="background: rgba(156, 39, 176, 0.1); border-left: 4px solid #9C27B0">
+                        <h3>TESTING</h3>
+                        <div class="dept-stats">
+                            <div class="stat">
+                                <span class="stat-value">239</span>
+                                <span class="stat-label">Total Tasks</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Team Members</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Completion Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dept-card" style="background: rgba(63, 81, 181, 0.1); border-left: 4px solid #3F51B5">
+                        <h3>PRODUCT</h3>
+                        <div class="dept-stats">
+                            <div class="stat">
+                                <span class="stat-value">9</span>
+                                <span class="stat-label">Total Tasks</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Team Members</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Completion Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dept-card" style="background: rgba(233, 30, 99, 0.1); border-left: 4px solid #E91E63">
+                        <h3>DESIGN</h3>
+                        <div class="dept-stats">
+                            <div class="stat">
+                                <span class="stat-value">23</span>
+                                <span class="stat-label">Total Tasks</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">1</span>
+                                <span class="stat-label">Team Members</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Completion Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Employee Charts -->
+            <div class="employee-charts-section">
+                <!-- Development Team -->
+                <div class="dept-section">
+                    <h2 class="dept-title" style="color: #FF5722">Development Team</h2>
+                    <div class="employee-charts-grid">
+                        <div class="employee-chart-card">
+                            <div class="employee-header">
+                                <h4>Dharmendra Singh</h4>
+                                <p>Tech Lead</p>
+                                <span class="task-count">30 tasks</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="dharmendraChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('dharmendraChart')">Export</button>
+                        </div>
+                        <div class="employee-chart-card">
+                            <div class="employee-header">
+                                <h4>Homendra Patil</h4>
+                                <p>Senior Software Developer</p>
+                                <span class="task-count">39 tasks</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="homendraChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('homendraChart')">Export</button>
+                        </div>
+                        <div class="employee-chart-card">
+                            <div class="employee-header">
+                                <h4>Neha Agarwal</h4>
+                                <p>Senior Software Developer</p>
+                                <span class="task-count">55 tasks</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="nehaChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('nehaChart')">Export</button>
+                        </div>
+                        <div class="employee-chart-card high-performer">
+                            <div class="employee-header">
+                                <h4>Ajay Marko</h4>
+                                <p>Frontend Developer</p>
+                                <span class="task-count">70 tasks</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="ajayChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('ajayChart')">Export</button>
+                        </div>
+                        <div class="employee-chart-card">
+                            <div class="employee-header">
+                                <h4>Sudha Sahu</h4>
+                                <p>React Native Developer</p>
+                                <span class="task-count">49 tasks</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="sudhaChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('sudhaChart')">Export</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testing Team -->
+                <div class="dept-section">
+                    <h2 class="dept-title" style="color: #9C27B0">Testing Team</h2>
+                    <div class="employee-charts-grid">
+                        <div class="employee-chart-card high-performer">
+                            <div class="employee-header">
+                                <h4>Sunil Singh</h4>
+                                <p>Quality Analyst</p>
+                                <span class="task-count">139 tasks</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="sunilChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('sunilChart')">Export</button>
+                        </div>
+                        <div class="employee-chart-card">
+                            <div class="employee-header">
+                                <h4>Om Sain</h4>
+                                <p>Quality Analyst</p>
+                                <span class="task-count">100 tasks</span>
+                                <span class="leave-indicator">Leave: Wed</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="omChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('omChart')">Export</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Team -->
+                <div class="dept-section">
+                    <h2 class="dept-title" style="color: #3F51B5">Product Team</h2>
+                    <div class="employee-charts-grid">
+                        <div class="employee-chart-card">
+                            <div class="employee-header">
+                                <h4>Abhishek Singh</h4>
+                                <p>Product Manager</p>
+                                <span class="task-count">3 tasks</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="abhishekChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('abhishekChart')">Export</button>
+                        </div>
+                        <div class="employee-chart-card">
+                            <div class="employee-header">
+                                <h4>Sakshi Bhuwal</h4>
+                                <p>Process Coordinator</p>
+                                <span class="task-count">6 tasks</span>
+                                <span class="leave-indicator">Leave: Thu</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="sakshiChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('sakshiChart')">Export</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Team -->
+                <div class="dept-section">
+                    <h2 class="dept-title" style="color: #E91E63">Design Team</h2>
+                    <div class="employee-charts-grid">
+                        <div class="employee-chart-card">
+                            <div class="employee-header">
+                                <h4>Hemant Talole</h4>
+                                <p>UI Designer</p>
+                                <span class="task-count">23 tasks</span>
+                            </div>
+                            <div class="chart-container" style="position: relative; height: 250px">
+                                <canvas id="hemantChart"></canvas>
+                            </div>
+                            <button class="btn btn--sm btn--outline export-btn" onclick="exportChart('hemantChart')">Export</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
