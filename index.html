@@ -15,9 +15,7 @@
             <div class="week-selector">
                 <label for="weekSelect">Week:</label>
                 <select id="weekSelect" class="form-control">
-                    <option value="current">25 August to 30 August 2025 (Mon-Sat)</option>
-                    <option value="week1">18 Aug - 23 Aug 2025</option>
-                    <option value="week2">11 Aug - 16 Aug 2025</option>
+                    <option value="current">25 August to 30 August 2025</option>
                 </select>
             </div>
         </header>
@@ -25,105 +23,111 @@
         <!-- Tab Navigation -->
         <nav class="tab-navigation">
             <button class="tab-button active" data-tab="executive" onclick="switchTab('executive')">
-                Executive Summary
+                CEO Dashboard
             </button>
             <button class="tab-button" data-tab="employee" onclick="switchTab('employee')">
                 Employee Report
             </button>
         </nav>
 
-        <!-- Executive Summary Tab -->
+        <!-- CEO Dashboard Tab - ONLY Business Metrics -->
         <div id="executiveTab" class="tab-content active">
             <!-- KPI Cards -->
             <div class="kpi-section">
                 <div class="kpi-grid">
                     <div class="kpi-card" style="background: var(--color-bg-1)">
-                        <h3>Total Tasks</h3>
-                        <div class="kpi-value">514</div>
-                        <div class="kpi-change">+12%</div>
+                        <h3>Total Users</h3>
+                        <div class="kpi-value">18</div>
+                        <div class="kpi-change">14 Paid + 4 Trial</div>
                     </div>
                     <div class="kpi-card" style="background: var(--color-bg-2)">
-                        <h3>Completion Rate</h3>
-                        <div class="kpi-value">100%</div>
-                        <div class="kpi-change">+5%</div>
+                        <h3>Conversion Rate</h3>
+                        <div class="kpi-value">77.8%</div>
+                        <div class="kpi-change">Paid Users</div>
                     </div>
                     <div class="kpi-card" style="background: var(--color-bg-3)">
-                        <h3>Team Members</h3>
-                        <div class="kpi-value">10</div>
-                        <div class="kpi-change">-</div>
+                        <h3>Weekly Revenue</h3>
+                        <div class="kpi-value">₹1,652</div>
+                        <div class="kpi-change">₹55.1 daily avg</div>
                     </div>
                     <div class="kpi-card" style="background: var(--color-bg-4)">
-                        <h3>Departments</h3>
-                        <div class="kpi-value">4</div>
-                        <div class="kpi-change">-</div>
+                        <h3>Marketing Spend</h3>
+                        <div class="kpi-value">₹1.5L</div>
+                        <div class="kpi-change">₹25K daily</div>
                     </div>
                     <div class="kpi-card" style="background: var(--color-bg-5)">
-                        <h3>Avg Daily Tasks</h3>
-                        <div class="kpi-value">85.7</div>
-                        <div class="kpi-change">+8%</div>
+                        <h3>Website Visitors</h3>
+                        <div class="kpi-value">59</div>
+                        <div class="kpi-change">0% conversion</div>
                     </div>
                     <div class="kpi-card" style="background: var(--color-bg-6)">
-                        <h3>Top Performer</h3>
-                        <div class="kpi-value">Ajay Marko</div>
-                        <div class="kpi-change">70 tasks</div>
+                        <h3>Team Tasks</h3>
+                        <div class="kpi-value">514</div>
+                        <div class="kpi-change">100% completion</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Executive Charts Grid -->
+            <!-- CEO Business Charts Grid - 9 Charts Total -->
             <div class="executive-charts-grid">
                 <div class="chart-card" style="background: var(--color-bg-1)">
-                    <h3>Department Distribution</h3>
+                    <h3>User Growth Trends</h3>
                     <div class="chart-container" style="position: relative; height: 300px">
-                        <canvas id="deptDistChart"></canvas>
+                        <canvas id="userGrowthChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-card" style="background: var(--color-bg-2)">
-                    <h3>Daily Team Performance</h3>
+                    <h3>Revenue vs Marketing</h3>
                     <div class="chart-container" style="position: relative; height: 300px">
-                        <canvas id="dailyPerfChart"></canvas>
+                        <canvas id="revenueMarketingChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-card" style="background: var(--color-bg-3)">
-                    <h3>Development Team Tasks</h3>
+                    <h3>Website Traffic</h3>
                     <div class="chart-container" style="position: relative; height: 300px">
-                        <canvas id="devTeamChart"></canvas>
+                        <canvas id="websiteTrafficChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-card" style="background: var(--color-bg-4)">
-                    <h3>Testing Team Performance</h3>
+                    <h3>Lead Conversion Funnel</h3>
                     <div class="chart-container" style="position: relative; height: 300px">
-                        <canvas id="testTeamChart"></canvas>
+                        <canvas id="leadConversionChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-card" style="background: var(--color-bg-5)">
-                    <h3>Top 5 Performers</h3>
+                    <h3>Department Performance</h3>
                     <div class="chart-container" style="position: relative; height: 300px">
-                        <canvas id="topPerfChart"></canvas>
+                        <canvas id="deptPerformanceChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-card" style="background: var(--color-bg-6)">
-                    <h3>Weekly Trend</h3>
+                    <h3>System Usage</h3>
                     <div class="chart-container" style="position: relative; height: 300px">
-                        <canvas id="weeklyTrendChart"></canvas>
+                        <canvas id="systemUsageChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-card" style="background: var(--color-bg-7)">
-                    <h3>Task Completion Rate</h3>
+                    <h3>Business Metrics Overview</h3>
                     <div class="chart-container" style="position: relative; height: 300px">
-                        <canvas id="completionChart"></canvas>
+                        <canvas id="businessOverviewChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-card" style="background: var(--color-bg-8)">
-                    <h3>Department Efficiency</h3>
+                    <h3>Marketing ROI</h3>
                     <div class="chart-container" style="position: relative; height: 300px">
-                        <canvas id="efficiencyChart"></canvas>
+                        <canvas id="marketingROIChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="background: var(--color-bg-1)">
+                    <h3>Daily Productivity Trends</h3>
+                    <div class="chart-container" style="position: relative; height: 300px">
+                        <canvas id="productivityTrendsChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Employee Report Tab -->
+        <!-- Employee Report Tab - ONLY Department Summary + Individual Charts -->
         <div id="employeeTab" class="tab-content">
             <!-- Department Summary Cards -->
             <div class="dept-summary-section">
@@ -283,7 +287,6 @@
                                 <h4>Om Sain</h4>
                                 <p>Quality Analyst</p>
                                 <span class="task-count">100 tasks</span>
-                                <span class="leave-indicator">Leave: Wed</span>
                             </div>
                             <div class="chart-container" style="position: relative; height: 250px">
                                 <canvas id="omChart"></canvas>
@@ -313,7 +316,6 @@
                                 <h4>Sakshi Bhuwal</h4>
                                 <p>Process Coordinator</p>
                                 <span class="task-count">6 tasks</span>
-                                <span class="leave-indicator">Leave: Thu</span>
                             </div>
                             <div class="chart-container" style="position: relative; height: 250px">
                                 <canvas id="sakshiChart"></canvas>
