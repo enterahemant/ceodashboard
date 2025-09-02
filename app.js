@@ -50,10 +50,10 @@ const employeeData = {
         {
             name: "Om Sain",
             role: "Quality Analyst",
-            dailyTasks: [5, 0, 34, 26, 7, 28], // Tuesday = 0 (leave)
+            dailyTasks: [28, 5, 0, 34, 26, 7], // Wednesday = 0 (leave)
             totalTasks: 100,
             color: '#9C27B0',
-            leaveDay: 1, // Tuesday (0-indexed: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5)
+            leaveDay: 2, // Tuesday (0-indexed: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5)
             leaveNote: "On Leave"
         }
     ],
@@ -68,10 +68,10 @@ const employeeData = {
         {
             name: "Sakshi Bhuwal",
             role: "Process Coordinator",
-            dailyTasks: [1, 1, 0, 1, 1, 2], // Wednesday = 0 (leave)
+            dailyTasks: [2, 1, 1, 0, 1, 1], // Thursday = 0 (leave)
             totalTasks: 6,
             color: '#3F51B5',
-            leaveDay: 2, // Wednesday (0-indexed: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5)
+            leaveDay: 3, // Wednesday (0-indexed: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5)
             leaveNote: "On Leave"
         }
     ],
